@@ -1,4 +1,4 @@
-const CACHE_NAME = "interior-accounting-pwa-v3-20260701-sync";
+const CACHE_NAME = "interior-accounting-pwa-v4-20260701-mobile-sync";
 const APP_FILES = [
   "./index.html",
   "./manifest.webmanifest",
