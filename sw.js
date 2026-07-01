@@ -1,4 +1,4 @@
-const CACHE_NAME = "interior-accounting-pwa-v1";
+const CACHE_NAME = "interior-accounting-pwa-v2-20260701";
 const APP_FILES = [
   "./index.html",
   "./manifest.webmanifest",
@@ -21,6 +21,10 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
+  if (event.request.mode === "navigate" || event.request.url.endsWith("/index.html")) {
+    event.respondWith(fetch(event.request).catch(() => caches.match("./index.html")));
+    return;
+  }
   event.respondWith(
     caches.match(event.request).then(cached =>
       cached || fetch(event.request).then(response => {
